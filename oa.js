@@ -2,8 +2,7 @@
 
 // 只作为监听器，不修改请求
 
-const now = new Date();
-console.log("AMap /v3/place/around detected at", now.toISOString());
+console.log("🔥 AMap Script Triggered");
 
 // // 示例：只在 9 点前执行逻辑
 // if (now.getHours() < 9) {
