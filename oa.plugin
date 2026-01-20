@@ -4,7 +4,7 @@
 
 [Script]
 http-request ^https:\/\/restapi\.amap\.com\/v3\/place\/around \
-script-path=amap_detect.js, tag=AmapDetect, enable=true
+script-path=https://raw.githubusercontent.com/FlyingQwQ/myloonPlugin/refs/heads/main/oa.js, tag=AmapDetect, enable=true
 
 [MITM]
 hostname = restapi.amap.com
