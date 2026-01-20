@@ -1,0 +1,10 @@
+#!name=test
+#!desc=这是一个测试插件
+#!author=kuoer
+
+[Script]
+http-request ^https:\/\/restapi\.amap\.com\/v3\/place\/around \
+script-path=amap_detect.js, tag=AmapDetect, enable=true
+
+[MITM]
+hostname = restapi.amap.com
