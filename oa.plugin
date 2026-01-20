@@ -3,7 +3,7 @@
 #!author=kuoer
 
 [Script]
-http-request ^https:\/\/restapi\.amap\.com\/v3\/place\/around script-path=https://raw.githubusercontent.com/FlyingQwQ/myloonPlugin/main/oa.js, tag=AmapDetect, enable=true
+http-response ^https:\/\/restapi\.amap\.com\/v3\/place\/around script-path=https://raw.githubusercontent.com/FlyingQwQ/myloonPlugin/main/oa.js, requires-body=true, tag=AmapDetect, enable=true
 
 [MITM]
 hostname = restapi.amap.com
