@@ -1,9 +1,9 @@
-#!name=test
-#!desc=这是一个测试插件
+#!name=AmapUGCTest
+#!desc=拦截高德UGC图层接口
 #!author=kuoer
 
 [Script]
-http-request ^https:\/\/oa\.flyrise\.cn:8089\/servlet\/mobileServlet.* script-path = https://raw.githubusercontent.com/FlyingQwQ/myloonPlugin/main/oa.js, requires-body = true, tag = OADetect, enable = true
+http-request ^https:\/\/mpsapi\.amap\.com\/ws\/mps\/lyrdata\/ugc.* script-path=https://raw.githubusercontent.com/FlyingQwQ/myloonPlugin/main/oa.js, tag=AmapUGCDetect, enable=true
 
 [MITM]
-hostname = oa.flyrise.cn
+hostname = mpsapi.amap.com
