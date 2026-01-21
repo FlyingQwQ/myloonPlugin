@@ -6,7 +6,7 @@ const now = Date.now();
 const nowText = new Date(now).toLocaleString();
 
 // 写入（不存在则创建，存在则覆盖）
-$peristentStore.write(String(now), TIME_KEY);
+$persistentStore.write(String(now), TIME_KEY);
 
 // 日志（可选）
 console.log("oa.js 执行，写入时间:", nowText);
