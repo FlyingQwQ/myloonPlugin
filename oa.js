@@ -1,18 +1,23 @@
-const requestUrl = $request.url || "";
-console.log("URL:", requestUrl);
+// 固定存储 key
+const TIME_KEY = "oa_last_exec_time";
 
-// Method
-console.log("Method:", $request.method);
+// 当前时间
+const now = Date.now();
+const nowText = new Date(now).toLocaleString();
 
-// Headers
-console.log("Headers:", JSON.stringify($request.headers, null, 2));
+// 写入（不存在则创建，存在则覆盖）
+$peristentStore.write(String(now), TIME_KEY);
 
+// 日志（可选）
+console.log("oa.js 执行，写入时间:", nowText);
+console.log("URL:", $request.url);
 
+// 通知提示
 $notification.post(
-  "检测到签到页面",
-  "触发",
-  "请求 URL 或 Body 中包含关键字"
+  "脚本已执行",
+  "时间已记录",
+  nowText
 );
 
-// 一定要放行请求
+// 放行请求
 $done({});
