@@ -14,7 +14,7 @@ console.log("URL:", $request.url);
 
 // 通知提示
 $notification.post(
-  "脚本已执行",
+  "检测到 OA 签到页面",
   "时间已记录",
   nowText
 );
