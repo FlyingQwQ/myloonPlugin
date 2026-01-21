@@ -1,5 +1,5 @@
-#!name=AmapUGCTest
-#!desc=拦截高德UGC图层接口
+#!name=flyrise打卡检测
+#!desc=写入进入签到页面时间
 #!author=kuoer
 
 [Script]
