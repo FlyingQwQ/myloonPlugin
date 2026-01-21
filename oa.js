@@ -1,20 +1,18 @@
-const TIME_KEY = "oa_last_exec_time";
-const INTERVAL = 10 * 1000; // 10 秒
+const requestUrl = $request.url || "";
+console.log("URL:", requestUrl);
 
-const now = Date.now();
-const lastTime = Number($peristentStore.read(TIME_KEY) || 0);
+// Method
+console.log("Method:", $request.method);
 
-if (now - lastTime > INTERVAL) {
-  $notification.post(
-    "检测到签到页面",
-    "",
-    "触发时间: " + new Date(now).toLocaleString()
-  );
+// Headers
+console.log("Headers:", JSON.stringify($request.headers, null, 2));
 
-  // 只有真正通知了，才写时间
-  $peristentStore.write(String(now), TIME_KEY);
-} else {
-  console.log("命中频控，跳过通知");
-}
 
+$notification.post(
+  "检测到签到页面",
+  "触发",
+  "请求 URL 或 Body 中包含关键字"
+);
+
+// 一定要放行请求
 $done({});
