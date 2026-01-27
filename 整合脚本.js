@@ -796,10 +796,10 @@ if (todayStatus.includes('假期') || todayStatus.includes('周末')) {
 
     if (diffMinutes <= 30) {
       // 前 30 分钟内 → 已签到
-      messageBody = "已签到 ✅\n上一次签到时间：" + new Date(lastTime).toLocaleString();
+      messageBody = "已签到 ✅";
     } else {
       // 超过 30 分钟 → 未签到
-      messageBody = "未签到 ⚠️\n上一次签到时间：" + new Date(lastTime).toLocaleString();
+      messageBody = "未签到 ⚠️";
     }
   } else {
     messageBody = "未找到历史签到记录";
