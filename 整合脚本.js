@@ -815,8 +815,25 @@ if (todayStatus.includes('假期') || todayStatus.includes('周末')) {
   }
 }
 
+// 构建通知内容
+let subTitle = "";
+let content = messageBody;
+
+// 根据通知类型调整子标题
+if (messageTitle.includes('休息日')) {
+  subTitle = "无需签到";
+} else if (messageTitle.includes('补班日')) {
+  subTitle = "记得签到";
+} else if (messageBody.includes('已签到')) {
+  subTitle = "签到状态";
+} else if (messageBody.includes('未签到')) {
+  subTitle = "签到提醒";
+} else if (messageBody.includes('未找到历史签到记录')) {
+  subTitle = "首次运行";
+}
+
 // 发送通知
-$notification.post(messageTitle, "", messageBody);
+$notification.post(messageTitle, subTitle, content);
 
 // 日志输出（可选）
 console.log("cron 执行时间:", new Date(now).toLocaleString());
