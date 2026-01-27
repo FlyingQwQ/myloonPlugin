@@ -785,30 +785,34 @@ const todayStr = today.getFullYear() + '-' +
 // 检查今天的状态
 const todayStatus = checkDateStatus(todayStr);
 
-if (lastTime) {
-  const diffMinutes = (now - lastTime) / 1000 / 60;
-
-  if (diffMinutes <= 30) {
-    // 前 30 分钟内 → 已签到
-    messageBody = "已签到 ✅\n上一次签到时间：" + new Date(lastTime).toLocaleString();
-  } else {
-    // 超过 30 分钟 → 未签到
-    messageBody = "未签到 ⚠️\n上一次签到时间：" + new Date(lastTime).toLocaleString();
-  }
-} else {
-  messageBody = "未找到历史签到记录";
-}
-
-// 添加日期状态信息
-messageBody += "\n\n今日状态：" + todayStatus;
-
 // 根据日期状态调整消息
 if (todayStatus.includes('假期') || todayStatus.includes('周末')) {
   messageTitle = "签到提醒（休息日）";
-  messageBody += "\n\n温馨提示：今天是休息日，无需签到";
-} else if (todayStatus.includes('补班')) {
-  messageTitle = "签到提醒（补班日）";
-  messageBody += "\n\n温馨提示：今天是补班日，记得签到";
+  messageBody = "今日状态：" + todayStatus + "\n\n温馨提示：今天是休息日，无需签到";
+} else {
+  // 工作日或补班日，检查签到状态
+  if (lastTime) {
+    const diffMinutes = (now - lastTime) / 1000 / 60;
+
+    if (diffMinutes <= 30) {
+      // 前 30 分钟内 → 已签到
+      messageBody = "已签到 ✅\n上一次签到时间：" + new Date(lastTime).toLocaleString();
+    } else {
+      // 超过 30 分钟 → 未签到
+      messageBody = "未签到 ⚠️\n上一次签到时间：" + new Date(lastTime).toLocaleString();
+    }
+  } else {
+    messageBody = "未找到历史签到记录";
+  }
+
+  // 添加日期状态信息
+  messageBody += "\n\n今日状态：" + todayStatus;
+
+  // 补班日提示
+  if (todayStatus.includes('补班')) {
+    messageTitle = "签到提醒（补班日）";
+    messageBody += "\n\n温馨提示：今天是补班日，记得签到";
+  }
 }
 
 // 发送通知
