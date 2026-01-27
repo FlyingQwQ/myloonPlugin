@@ -806,7 +806,7 @@ if (todayStatus.includes('假期') || todayStatus.includes('周末')) {
   }
 
   // 添加日期状态信息
-  messageBody += "\n\n今日状态：" + todayStatus;
+  messageBody += "\n今日状态：" + todayStatus;
 
   // 补班日提示
   if (todayStatus.includes('补班')) {
